@@ -14,7 +14,7 @@ function Home() {
         if (!localStorage.getItem('accessToken')) {
             history.push('/login');
         } else {
-            axios.get('http://localhost:3001/posts', 
+            axios.get('https://codigram-api.herokuapp.com/posts', 
                 {
                     headers: {
                         accessToken: localStorage.getItem('accessToken')
@@ -30,7 +30,7 @@ function Home() {
     }, []);
 
     const likeAPost = (postId) => {
-        axios.post('http://localhost:3001/likes', {
+        axios.post('https://codigram-api.herokuapp.com/likes', {
             PostId: postId
         },
         {

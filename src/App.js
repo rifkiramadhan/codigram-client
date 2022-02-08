@@ -20,7 +20,7 @@ function App() {
   });
 
   useEffect(() => {
-      axios.get('http://localhost:3001/auth/auth', { headers: {
+      axios.get('https://codigram-api.herokuapp.com/auth/auth', { headers: {
         accessToken: localStorage.getItem('accessToken')
       }}).then((response) => {
         if (response.data.error) {

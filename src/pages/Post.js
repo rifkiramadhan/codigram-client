@@ -12,17 +12,17 @@ function Post() {
     let history = useHistory();
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
+        axios.get(`https://codigram-api.herokuapp.com/posts/byId/${id}`).then((response) => {
             setPostObject(response.data);
         });
 
-        axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
+        axios.get(`https://codigram-api.herokuapp.com/comments/${id}`).then((response) => {
             setComments(response.data);
         });
     }, []);
 
     const addComment = () => {
-        axios.post('http://localhost:3001/comments', {
+        axios.post('https://codigram-api.herokuapp.com/comments', {
             commentBody: newComment,
             PostId: id
         },
@@ -48,7 +48,7 @@ function Post() {
     };
 
     const deleteComment = (id) => {
-        axios.delete(`http://localhost:3001/comments/${id}`, { 
+        axios.delete(`https://codigram-api.herokuapp.com/comments/${id}`, { 
             headers: {
                 accessToken: localStorage.getItem('accessToken')
             }
@@ -62,7 +62,7 @@ function Post() {
     };
 
     const deletePost = () => {
-        axios.delete(`http://localhost:3001/posts/${id}`, {
+        axios.delete(`https://codigram-api.herokuapp.com/posts/${id}`, {
             headers: {
                 accessToken: localStorage.getItem('accessToken')
             }
@@ -75,7 +75,7 @@ function Post() {
     const editPost = (option) => {
         if (option === 'title') {
             let newTitle = prompt('Enter New Title: ');
-            axios.put('http://localhost:3001/posts/title', {
+            axios.put('https://codigram-api.herokuapp.com/posts/title', {
                 newTitle: newTitle,
                 id: id
             },
@@ -91,7 +91,7 @@ function Post() {
             });
         } else {
             let newPostText = prompt('Enter New Text: ');
-            axios.put('http://localhost:3001/posts/postText', {
+            axios.put('https://codigram-api.herokuapp.com/posts/postText', {
                 newText: newPostText,
                 id: id
             },
