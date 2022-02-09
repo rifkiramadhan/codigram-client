@@ -10,8 +10,8 @@ function Registration() {
     };
 
     const validationSchema = Yup.object().shape({
-        username: Yup.string().min(3).max(15).required("You must input a Author!"),
-        password: Yup.string().min(4).max(20).required("You must input a Author!")
+        username: Yup.string().min(3).max(15).required("You must input a Username!"),
+        password: Yup.string().min(4).max(20).required("You must input a Password!")
     });
 
     const onSubmit = (data) => {
@@ -44,7 +44,6 @@ function Registration() {
 
                         <button type="submit">Register</button>
                     </Form>
-
                     
                 </Formik>
             </div>;

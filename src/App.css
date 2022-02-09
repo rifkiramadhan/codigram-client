@@ -37,6 +37,11 @@ body {
   color: white;
 }
 
+.post .title:hover {
+  font-weight: bold;
+  cursor: copy;
+}
+
 .post .body {
   flex: 60%;
   display: grid;
@@ -61,6 +66,7 @@ body {
 .footer .username:hover {
   font-size: 24px;
   font-weight: bold;
+  text-decoration: underline;
 }
 .footer .buttons {
   flex: 50%;
@@ -71,9 +77,18 @@ body {
 
 .likeBttn {
   color: rgba(233, 174, 174, 0.8);
+  transition: width 2s;
 }
+.likeBttn:hover {
+  color: white;
+}
+
 .unlikeBttn {
   color: white;
+  transition: width 2s;
+}
+.unlikeBttn:hover {
+  color: rgba(233, 174, 174, 0.8);
 }
 
 .buttons label {
@@ -256,6 +271,11 @@ button {
   font-size: 25px;
 }
 
+.body:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
 /* LOGIN */
 
 .loginContainer {
@@ -267,7 +287,7 @@ button {
   padding-top: 100px;
 }
 
-.loginContainer h1 {
+.loginContainer h1, h1 {
   font-family: Arial, Helvetica, sans-serif;
 }
 
