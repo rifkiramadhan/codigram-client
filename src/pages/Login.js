@@ -36,13 +36,15 @@ function Login() {
                 <div class="formContainer">
                     <label>Username: </label>
                     <input 
-                        type="text" 
+                        type="text"
+                        placeholder="(Ex. Rifki123...)" 
                         onChange={(event) => {setUsername(event.target.value)}}
                     />
                     
-                    <label>Username: </label>
+                    <label>Password: </label>
                     <input 
                         type="password" 
+                        placeholder="Input Your Password..." 
                         onChange={(event) => {setPassword(event.target.value)}}
                     />
 
