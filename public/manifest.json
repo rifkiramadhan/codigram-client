@@ -1,10 +1,11 @@
 {
   "short_name": "Codigram",
   "name": "Codigram from Codi Health",
+  "description": "Codigram adalah aplikasi sistem informasi berbasis website yang bertujuan untuk mendukung platform Codi Health sebagai fasilitas komunikasi dan konsultasi antara pasien dan dokter specialist yang kemudian akan diberikan solusi dan rekomendasi obat-obatan sesuai resep dokter yang dapat di beli melalui aplikasi Codi Health.",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "48x48",
       "type": "image/x-icon"
     },
     {
