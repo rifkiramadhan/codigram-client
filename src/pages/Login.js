@@ -33,7 +33,7 @@ function Login() {
 
     return <div className="loginContainer"> 
                 <h1>Selamat Datang, Silahkan Login</h1>
-                <div class="formContainer">
+                <div className="formContainer">
                     <label>Username: </label>
                     <input 
                         type="text"
