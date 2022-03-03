@@ -1,16 +1,22 @@
 import './App.css';
+import logo from './assets/logo.png';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import Home from './pages/Home';
-import CreatePost from './pages/CreatePost';
-import Post from './pages/Post';
-import Registration from './pages/Registration';
-import Login from './pages/Login';
-import PageNotFound from './pages/PageNotFound';
-import Profile from './pages/Profile';
-import ChangePassword from './pages/ChangePassword';
+import 'bootstrap/dist/css/bootstrap.css';
+import { Navbar, Container, Nav, DropdownButton, Dropdown } from 'react-bootstrap';
+import {
+  Login,
+  Registration,
+  Post,
+  CreatePost,
+  Home,
+  Profile,
+  ChangePassword,
+  PageNotFound
+} from './pages';
 import { AuthContext } from './helpers/AuthContext';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { URL } from './config/config';
 
 function App() {
   const [authState, setAuthState] = useState({
@@ -18,9 +24,9 @@ function App() {
     id: 0,
     status: false
   });
-
+  
   useEffect(() => {
-      axios.get('https://codigram-api.herokuapp.com/auth/auth', { headers: {
+      axios.get(`${URL}/auth/auth`, { headers: {
         accessToken: localStorage.getItem('accessToken')
       }}).then((response) => {
         if (response.data.error) {
@@ -48,28 +54,120 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="container-fluid">
       <AuthContext.Provider value={{ authState, setAuthState }}>
         <Router>
-          <div className="navbar">
-            <div className="links">
-              {!authState.status ? (
+          <Navbar 
+             bg="light" 
+             variant="light"
+             sticky="top" 
+             expand="sm" 
+             className="navbar navbar-expand-lg"
+             collapseOnSelect
+          >
+            <Container fluid>
+
+            <Navbar.Brand>
+              <a 
+                  href="/"
+                  className="text-decoration-none"    
+              >    
+                  <img 
+                      src={logo}
+                      className="rounded-circle"
+                      width="40px" 
+                      height="40px" 
+                      alt=""
+                  />
+                  {' '}
+                  <span className="text-dark fw-bold">Codigram</span>
+              </a>
+            </Navbar.Brand>
+
+            <Navbar.Toggle className="coloring" />
+
+            <Navbar.Collapse className="justify-content-end">
+
+              <Nav className="justify-content-end">
+                <ul className="navbar-nav ml-auto mb-2 mb-lg-0 gap-3">
+                  {!authState.status ? (
+                    <>
+                    <li className="nav-item">
+                      <Link 
+                        className="nav-link text-dark text-uppercase" 
+                        to="http://bit.ly/Rifki-Portfolio"
+                      >About Me
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link 
+                        className="btn btn-light border-success fw-bold w-100 text-uppercase rounded-pill" 
+                        to="/login"
+                      >Sign In
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link
+                        className="btn btn-success fw-bold w-100 text-uppercase rounded-pill" 
+                        to="/registration"
+                      >Sgin Up
+                      </Link>
+                    </li>
+                    </>
+                  ) : (
+                    <>
+                    <li className="nav-item">
+                      <Link 
+                        className="nav-link text-dark text-uppercase" 
+                        to="/"
+                      >Beranda
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link 
+                        className="nav-link text-dark text-uppercase" 
+                        to="/createpost"
+                      >Buat Postingan
+                      </Link>
+                    </li>
+                    </>
+                  )}
+                </ul>
+
+                {authState.status ? (
+                <DropdownButton 
+                    className="text-uppercase" 
+                    title={`Hello, ${authState.username}`} 
+                    variant="light" 
+                    menuVariant="light"
+                >
                 <>
-                  <Link to="/login">Login</Link>
-                  <Link to="/registration">Registration</Link>
+                    <Dropdown.Item>
+                        <button 
+                            className="btn nav-link text-dark fw-medium text-uppercase"
+                            onClick={() => logout()}
+                        > Sign Out
+                        </button>
+                    </Dropdown.Item>
                 </>
-              ) : (
+                </DropdownButton>
+                ):(
                 <>
-                  <Link to="/">Home Page</Link>
-                  <Link to="/createpost">Create A Post</Link>
+                    <Dropdown.Item className="d-none">
+                        <Link 
+                            className="nav-link text-dark fw-medium text-uppercase d-none" 
+                            to="/users/register"
+                        >
+                        </Link>
+                    </Dropdown.Item>
                 </>
-              )}
-            </div>
-            <div className="loggedInContainer">
-              <h4>Hello Selamat Datang, {authState.username} </h4>
-              {authState.status && <button onClick={logout}>Logout</button>}
-            </div>
-          </div>
+                )}
+              </Nav>
+              
+            </Navbar.Collapse>
+
+            </Container>
+          </Navbar >
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/createpost" exact component={CreatePost} />

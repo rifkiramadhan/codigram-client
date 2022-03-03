@@ -1,0 +1,80 @@
+/* Card Home */
+.card-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  max-width: 100%;
+  border-radius: 25px 25px 25px 25px;
+  -moz-border-radius: 25px 25px 25px 25px;
+  -webkit-border-radius: 25px 25px 25px 25px;
+  border: 0px solid black;
+  background-color: var(--light-green-color);
+}
+
+.card-hover {
+  backdrop-filter: blur( 3.5px );
+  -webkit-backdrop-filter: blur( 3.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  transition: all 1s ease;
+  cursor: pointer;
+}
+
+.card-hover:hover {
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+}
+
+/* Link Profile */
+.link-profile {
+  z-index: 1 !important;
+}
+
+/* Form Control */
+.form-control {
+  background: var(--green-color);
+  border: none;
+}
+
+.footerHome .buttonsHome {
+  flex: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.likeBttn {
+    color: var(--light-grey-color);
+    transition: width 2s;
+    cursor: pointer;
+}
+
+.likeBttn:hover {
+  color: var(--grey-color);
+}
+
+.unlikeBttn {
+  color: var(--grey-color);
+  transition: width 2s;
+  cursor: pointer;
+}
+
+.unlikeBttn:hover {
+  color: var(--light-grey-color);
+}
+
+.buttonsHome label {
+  margin-right: 20px;
+  margin-left: 10px;
+}
+
+/* Rounded Post */
+.rounded-post {
+  border-radius: 0px 0px 20px 20px;
+  -moz-border-radius: 0px 0px 20px 20px;
+  -webkit-border-radius: 0px 0px 20px 20px;
+  border: 0px solid #000000;
+  background-color: var(--white-color);
+}

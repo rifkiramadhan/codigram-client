@@ -1,0 +1,49 @@
+.card-profile {
+    margin-top: 100px;
+    border-radius: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--light-green-color);
+    color: rgb(51, 48, 48);
+}
+
+.card-profile-post {
+    border-radius: 25px 25px 25px 25px;
+    -moz-border-radius: 25px 25px 25px 25px;
+    -webkit-border-radius: 25px 25px 25px 25px;
+    border: 0px solid black;
+    cursor: pointer;
+    transition: all 1s ease;
+}
+
+.card-profile-post:hover {
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  }
+
+.img-name{
+    width: 100%;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -75px;
+    border-bottom: 5px solid var(--green-color);
+}
+
+.img-name img{
+    display: block;
+    width: 140px;
+    height: 140px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 70px;
+    border: 5px solid var(--green-color);
+    background-color: rgb(234, 241, 247);
+}
+
+.img-name h2{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.img-name span{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

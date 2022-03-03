@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap');
+
+.card-comment {
+  border-radius: 25px 25px 25px 25px;
+  -moz-border-radius: 25px 25px 25px 25px;
+  -webkit-border-radius: 25px 25px 25px 25px;
+  border: 0px solid black;
+  max-width: 100%;
+  background-color: var(--light-green-color);
+}
+
+/* Block Title */
+.block-title {
+  font-size: 14px;
+  margin: 20px auto;
+  font-family: Open Sans;
+  font-style: italic;
+  color: var(--grey-color);
+  padding: 1.2em 30px 1.2em;
+  border-left: 3px solid var(--light-grey-color);
+  line-height: 1.6;
+  position: relative;
+  border-radius: 0px 18px 18px 0px;
+  -moz-border-radius: 0px 18px 18px 0px;
+  -webkit-border-radius: 0px 18px 18px 0px;
+  background: var(--light-blue-color-medium);
+}
+
+/* Block Case */
+.classy-bq {
+  border-left:1px solid var(--light-green-color);
+  margin: 1.5em 5px;
+  padding: .7em 3px;
+  quotes: "\201C""\201D""\2018""\2019";
+  color:var(--black-color);
+}
+.classy-bq:before {
+  color: var(--black-color);
+  content: open-quote;
+  font-size: 8em;
+  line-height: .1em;
+  margin-right: .25em;
+  vertical-align: -.4em;
+  opacity:0.60;
+}
+blockquote p {
+  display: inline;
+  font-size: 1rem;
+  line-height:1.5;
+  font-family: 'Montserrat', sans-serif;
+}
+.blockquote-section {
+  width:100%;
+  max-width:1200px;
+  margin:0 auto;
+  opacity:0.95;
+  padding:20px;
+}
+
+/* Edit */
+.edit {
+  cursor: pointer;
+  transition: all 1s ease;
+}
+
+.edit:hover {
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+}
+
+/* Rounded Comment */
+.rounded-comment {
+  border-radius: 0px 18px 18px 0px;
+  -moz-border-radius: 0px 18px 18px 0px;
+  -webkit-border-radius: 0px 18px 18px 0px;
+  border: 0px solid #000000;
+}
+
+/* Rounded Body */
+.rounded-body {
+  border-radius: 0px 18px 18px 0px;
+  -moz-border-radius: 0px 18px 18px 0px;
+  -webkit-border-radius: 0px 18px 18px 0px;
+  border: 0px solid #000000;
+  background-color: var(--white-color);
+}
