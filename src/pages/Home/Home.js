@@ -70,7 +70,7 @@ function Home() {
 
             if (likedPost.includes(postId)) {
                 setLikedPost(likedPost.filter((id) => {
-                    return id != postId;
+                    return id !== postId;
                 }))
             } else {
                 setLikedPost(
@@ -100,9 +100,9 @@ function Home() {
                                                         to={`/profile/${value.UserId}`}
                                                         className="text-decoration-none"
                                                     >
-                                                        <h5 className="fw-bold">
+                                                        <h4 className="fw-bold">
                                                             <i className="fa-solid fa-circle-user"></i> {value.username}
-                                                        </h5>
+                                                        </h4>
                                                     </Link>
                                                 </div>
 
@@ -121,15 +121,23 @@ function Home() {
                                                     </div>
                                                 </div>
                                                 
+                                                <div className="card-text text-muted">
+                                                    <small>
+                                                        {value.Likes.length} orang menyukai
+                                                    </small>
+                                                </div>
+                                                
                                                 <div className="card-text text-muted mt-4">
                                                     <div className="buttonsHome">
-                                                        <i
-                                                            className={likedPost.includes(value.id) ? "fas fa-thumbs-up unlikeBttn" : "fas fa-thumbs-up likeBttn"}
-                                                            onClick={() => likeAPost(value.id)}
-                                                        >
-                                                        </i>
-                                                        
-                                                        <label><small>{value.Likes.length} disukai</small></label>
+                                                        <label>
+                                                            <h4>
+                                                                <i
+                                                                    className={likedPost.includes(value.id) ? "fas fa-thumbs-up unlikeBttn" : "fas fa-thumbs-up likeBttn"}
+                                                                    onClick={() => likeAPost(value.id)}
+                                                                >
+                                                                </i>
+                                                            </h4>
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>

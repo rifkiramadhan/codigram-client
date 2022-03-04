@@ -10,7 +10,7 @@
   border-radius: 25px 25px 25px 25px;
   -moz-border-radius: 25px 25px 25px 25px;
   -webkit-border-radius: 25px 25px 25px 25px;
-  border: 0px solid black;
+  border: 0px solid var(--black-color);
   background-color: var(--light-green-color);
 }
 
@@ -75,6 +75,6 @@
   border-radius: 0px 0px 20px 20px;
   -moz-border-radius: 0px 0px 20px 20px;
   -webkit-border-radius: 0px 0px 20px 20px;
-  border: 0px solid #000000;
+  border: 0px solid var(--black-color);
   background-color: var(--white-color);
 }

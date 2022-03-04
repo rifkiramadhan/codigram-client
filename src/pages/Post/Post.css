@@ -1,20 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap');
-
 .card-comment {
   border-radius: 25px 25px 25px 25px;
   -moz-border-radius: 25px 25px 25px 25px;
   -webkit-border-radius: 25px 25px 25px 25px;
-  border: 0px solid black;
+  border: 0px solid var(--black-color);
   max-width: 100%;
   background-color: var(--light-green-color);
 }
 
 /* Block Title */
 .block-title {
-  font-size: 14px;
+  font-size: 18px;
   margin: 20px auto;
-  font-family: Open Sans;
-  font-style: italic;
+  font-weight: bold;
   color: var(--grey-color);
   padding: 1.2em 30px 1.2em;
   border-left: 3px solid var(--light-grey-color);
@@ -23,7 +20,7 @@
   border-radius: 0px 18px 18px 0px;
   -moz-border-radius: 0px 18px 18px 0px;
   -webkit-border-radius: 0px 18px 18px 0px;
-  background: var(--light-blue-color-medium);
+  background: var(--white-color);
 }
 
 /* Block Case */
@@ -72,7 +69,7 @@ blockquote p {
   border-radius: 0px 18px 18px 0px;
   -moz-border-radius: 0px 18px 18px 0px;
   -webkit-border-radius: 0px 18px 18px 0px;
-  border: 0px solid #000000;
+  border: 0px solid var(--black-color);
 }
 
 /* Rounded Body */
@@ -80,6 +77,6 @@ blockquote p {
   border-radius: 0px 18px 18px 0px;
   -moz-border-radius: 0px 18px 18px 0px;
   -webkit-border-radius: 0px 18px 18px 0px;
-  border: 0px solid #000000;
+  border: 0px solid var(--black-color);
   background-color: var(--white-color);
 }

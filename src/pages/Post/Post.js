@@ -145,21 +145,36 @@ function Post() {
         };
     };
 
+    const date = new Date().toLocaleDateString('id-ID', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    });
+
     return (
         <>
-            <h1 className="text-center fw-bold">Detail Post</h1>
+            <h1 className="text-center fw-bold mt-5">Detail Post</h1>
             <div className="container">
-                <div className="row mt-5 d-flex align-items-center justify-content-center gap-3">
+                <div className="row mt-5 d-flex justify-content-center gap-3">
                     <div className="card card-body col-xs-12 col-sm-6">
                         <div className="card-text">
                         <Link 
                             to={`/profile/${id}`}
-                            className="text-decoration-none"
+                            className="text-decoration-none d-flex gap-2"
                         >
-                            <h4 className="fw-bold">
-                                <i className="fa-solid fa-circle-user fw-bold"></i> {postObject.username}
-                            </h4>
+                            <h1>
+                                <i className="fa-solid fa-circle-user fw-bold"></i> 
+                            </h1>
+                            <div className="fw-bold text-wrap">
+                                <h5 className="fw-bold">
+                                    {postObject.username}
+                                    <h6 className="text-muted">
+                                        {postObject.createdAt}
+                                    </h6>
+                                </h5>
+                            </div>
                         </Link>
+                            {" "}
                         </div>
 
                         <div 
@@ -214,12 +229,14 @@ function Post() {
                                 value={newComment}
                                 onChange={(event) => {setNewComment(event.target.value)}}
                             />
+                        </div>
+                        <div className="card-body">
                             <button 
                                 className="btn btn-sm btn-success rounded-pill"
                                 onClick={addComment}
                             ><i className="fa-solid fa-paper-plane"></i> Comment
                             </button>
-                        </div>                
+                        </div>            
                     </div>
 
                     <div className="card-comment">
@@ -228,8 +245,21 @@ function Post() {
                                 comments.map((comment, key) => {
                                     return (
                                             <div key={key} className="card-title mt-5 border-start border-success bg-light rounded-comment">
-                                                <div className="m-2">
-                                                    <label><i class="fa-solid fa-user-check"></i> <b>{comment.username}</b></label>
+                                                <div className="m-2 p-2">
+                                                    <div className="d-flex gap-2">
+                                                        <h1>
+                                                            <i className="text-secondary fa-solid fa-circle-user fw-bold"></i> 
+                                                        </h1>
+                                                        <h6 className="wrap-text">
+                                                            <div className="fw-bold">
+                                                                {comment.username}
+                                                            </div>
+                                                            <p className="text-muted">
+                                                                <small>{date}</small>
+                                                            </p>
+                                                        </h6>
+                                                    </div>
+
                                                     {" "}
                                                     <div className="card-text mt-3">
                                                         {comment.commentBody}

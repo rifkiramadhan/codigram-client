@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Registration.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { URL } from '../../config/config';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function Registration() {
+    const [loading, setLoading] = useState(false);
+    const history = useHistory();
+
     const initialValues = {
         username: '',
         password: ''
@@ -18,8 +22,28 @@ function Registration() {
     });
 
     const onSubmit = (data) => {
-        axios.post(`${URL}/auth`, data).then(() => {
-            console.log(data);
+        setLoading(true);
+
+        axios.post(`${URL}/auth`, data).then((response) => {
+
+            if (response.data.error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Sign Up Gagal!',
+                    text: `${response.data.error}`,
+                });
+            } else {
+                console.log(data);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Anda berhasil mendaftar akun',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                history.push('/');
+            };
+            
         });
     };
 
@@ -62,20 +86,33 @@ function Registration() {
 
                         <div className="row mt-5 d-grid">    
                             <div className="col-sm-12">
-                                <button 
-                                    type="submit" 
-                                    className="btn btn-md btn-success fw-bold rounded-pill w-100" 
-                                >Sign Up
-                                </button>
+                                
+                                {
+                                    loading ? (
+                                        <button 
+                                            type="submit" 
+                                            className="btn btn-md btn-success fw-bold rounded-pill w-100"
+                                            disabled
+                                        >Loading ...
+                                        </button>
+                                    ) : (
+                                        <button 
+                                            type="submit" 
+                                            className="btn btn-md btn-success fw-bold rounded-pill w-100" 
+                                        >Sign Up
+                                        </button>
+                                    )
+                                }
+
                             </div>
-                            <p className="mt-20">
+                            <small className="mt-2 text-center">
                                 Sudah memiliki akun ?
                                 <Link 
                                     to="/login"
                                     className="fw-bold text-secondary text-decoration-none"
                                 > Sign In Here
                                 </Link>
-                            </p>
+                            </small>
                         </div>
                         </Form>
                         

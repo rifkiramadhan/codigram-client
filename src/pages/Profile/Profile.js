@@ -23,11 +23,17 @@ function Profile() {
         });
     }, []);
 
+    const date = new Date().toLocaleDateString('id-ID', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    });
+
     return (
             <div className="container">
                 <div className="row">
                     <h1 className="text-center text-dark fw-bold mb-5 mt-5 pt-5">Profile Saya</h1>
-                    <div className="col-md-12 card-profile">
+                    <div className="col-md-12 card-profile mb-5">
                             <div className="img-name text-center">
                                 <img
                                     src={logo}
@@ -56,23 +62,39 @@ function Profile() {
                                                 key={key} className="border card-profile-post border-secondary bg-light col-xs-12 col-sm-5 p-4"
                                                 onClick={() => {history.push(`/post/${value.id}`)}}
                                             >
-                                                <div className="card-text">
-                                                    <h5 className="fw-bold">
+                                                {/* <div className="card-text">
+                                                    <h4 className="fw-bold">
                                                         <i className="fa-solid fa-circle-user fw-bold"></i> {value.username}
-                                                    </h5>
+                                                    </h4>
+                                                    <small className="text-muted">{date}</small>
                                                 </div>
-                                                <div className="card-title mt-3">
-                                                    <b>{value.title}</b>
+                                                <div className="card-title mt-4 fw-bold">
+                                                    {value.title}
+                                                </div> */}
+
+                                                <div className="d-flex gap-2">
+                                                    <h1>
+                                                        <i className="fa-solid fa-circle-user fw-bold"></i> 
+                                                    </h1>
+                                                    <h6 className="wrap-text">
+                                                        <div className="fw-bold">
+                                                            {value.username}
+                                                        </div>
+                                                        <p className="text-muted">
+                                                            <small>{date}</small>
+                                                        </p>
+                                                    </h6>
                                                 </div>
+
                                                 <div 
                                                     className="card-text"
                                                 >
                                                     {value.postText}
                                                 </div>
-                                                <div className="card-text mt-3">
+                                                <div className="card-text mt-4">
                                                     <div className="card-text">
                                                         <small>
-                                                            <i className="fa-solid fa-thumbs-up"></i> {value.Likes.length} disukai
+                                                            <i className="fa-solid fa-thumbs-up"></i> {value.Likes.length} orang menyukai
                                                         </small>
                                                     </div>
                                                 </div>

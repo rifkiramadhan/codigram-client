@@ -4,6 +4,7 @@
   --black-color: #000000;
   --grey-color: #74959A;
   --light-grey-color: #acacaa;
+  --light-grey-color-basic: #e0e1ed;
   --light-blue-color: #00B4D8;
   --light-blue-color-medium: #CAF0F8;
   --dark-blue-color: #3E497A;
@@ -22,16 +23,16 @@
 body,
 html {
   max-width: 100%;
-  max-height: 100%;
+  max-height: 100vh;
   scroll-behavior: smooth;
-}
-
-body {
-  min-height: 100vh;
 }
 
 h1 {
   font-family: 'Acme', sans-serif;
+}
+
+.navbar {
+  border: .01rem solid var(--light-grey-color-basic);
 }
 
 .navbar-brand {

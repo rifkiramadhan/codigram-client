@@ -10,6 +10,7 @@ function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const { setAuthState } = useContext(AuthContext); 
+    const [loading, setLoading] = useState(false);
 
     let history = useHistory();
 
@@ -18,6 +19,8 @@ function Login() {
             username: username,
             password: password
         };
+
+        setLoading(true);
 
         axios.post(`${URL}/auth/login`, data).then((response) => {
             if (response.data.error) {
@@ -43,9 +46,9 @@ function Login() {
             <h1 className="text-center text-dark fw-bold mt-5 pt-5">Sign In Account</h1>
             <div className="container d-flex align-items-center justify-content-center"> 
                 <div className="container-form card-form-user m-5 p-5">
-                    <form className="row d-flex align-items-center justify-content-center">
+                    <form className="skeleton row d-flex align-items-center justify-content-center">
 
-                        <div className="row mb-3 d-grid">
+                        <div className=" row mb-3 d-grid">
                             <label className="text-dark col-sm-2 fw-normal col-form-label">Username: </label>
                             <div className="col-sm-12">                           
                                 <input 
@@ -73,21 +76,33 @@ function Login() {
                     <div className="row mt-5 d-flex align-items-center justify-content-center">
                         <div className="row d-grid">    
                             <div className="col-sm-12">
-                                <button 
-                                    type="submit"
-                                    className="btn btn-md btn-success fw-bold rounded-pill w-100" 
-                                    onClick={login}
-                                >Sign In
-                                </button>
+                                {
+                                    loading ? (
+                                        <button 
+                                            type="submit"
+                                            className="btn btn-md btn-success fw-bold rounded-pill w-100"
+                                            disabled
+                                        >Loading ...
+                                        </button>
+                                    ) : (
+                                        <button 
+                                            type="submit"
+                                            className="btn btn-md btn-success fw-bold rounded-pill w-100" 
+                                            onClick={login}
+                                        >Sign In
+                                        </button>
+                                    )
+                                }
+
                             </div>
-                            <p className="mt-20">
+                            <small className="mt-2 text-center">
                                 Belum memiliki akun ?
                                 <Link 
-                                    to="/login"
+                                    to="/registration"
                                     className="fw-bold text-secondary text-decoration-none"
                                 > Sign Up Here
                                 </Link>
-                            </p>
+                            </small>
                         </div>
                     </div>
                 </div>

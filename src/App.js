@@ -54,7 +54,7 @@ function App() {
   };
 
   return (
-    <div className="container-fluid">
+    <>
       <AuthContext.Provider value={{ authState, setAuthState }}>
         <Router>
           <Navbar 
@@ -62,7 +62,7 @@ function App() {
              variant="light"
              sticky="top" 
              expand="sm" 
-             className="navbar navbar-expand-lg"
+             className="navbar navbar-expand-lg navbar-default"
              collapseOnSelect
           >
             <Container fluid>
@@ -180,7 +180,7 @@ function App() {
           </Switch>
         </Router>
       </AuthContext.Provider>
-    </div>
+    </>
   );
 };
 
