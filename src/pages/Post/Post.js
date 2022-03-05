@@ -24,7 +24,7 @@ function Post() {
         axios.get(`${URL}/comments/${id}`).then((response) => {
             setComments(response.data);
         });
-    }, []);
+    }, [id]);
 
     const addComment = () => {
         axios.post(`${URL}/comments`, {
@@ -46,7 +46,8 @@ function Post() {
                 });
             } else {
                 const commentToAdd = {
-                    commentBody: newComment, username: response.data.username
+                    commentBody: newComment,
+                    username: response.data.username,
                 };
     
                 setComments([...comments, commentToAdd]);
@@ -60,7 +61,7 @@ function Post() {
                     timer: 1500
                 });
             };
-
+            window.location.reload();
         });
     };
 
@@ -72,9 +73,17 @@ function Post() {
         }).then(() => {
                 setComments(
                     comments.filter((val) => {
-                    return val.id != id
+                    return val.id !== id;
                 })
             );
+
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Anda berhasil menghapus komentar',
+                showConfirmButton: false,
+                timer: 1500
+            });
         });
     };
 
@@ -147,12 +156,6 @@ function Post() {
         };
     };
 
-    const date = new Date().toLocaleDateString('id-ID', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-    });
-
     return (
         <>
             <h1 className="text-center fw-bold mt-5">Detail Post</h1>
@@ -174,7 +177,7 @@ function Post() {
                                 </p>
                             </div>
                         </Link>
-                            {" "}
+                            {' '}
                         </div>
 
                         <div 
@@ -257,13 +260,6 @@ function Post() {
                         <div className="card-body">
                             {
                                 comments.map((comment, key) => {
-
-                                    const date = new Date().toLocaleDateString('id-ID', {
-                                        year: 'numeric',
-                                        month: 'long',
-                                        day: 'numeric',
-                                    });
-
                                     return (
                                             <div key={key} className="card-title mt-5 border-start border-success bg-light rounded-comment">
                                                 <div className="m-2 p-2">
@@ -274,16 +270,18 @@ function Post() {
                                                         <div className="card-text">
                                                             <span className="fw-bold">{comment.username}</span>
                                                             <p className="text-muted">
-                                                                <small>{date}</small>
+                                                                <small>
+                                                                    {comment.createdAt}
+                                                                </small>
                                                             </p>
                                                         </div>
                                                     </div>
 
-                                                    {" "}
+                                                    {' '}
                                                     <div className="card-text mt-3">
                                                         {comment.commentBody}
                                                     </div>
-                                                    {" "}
+                                                    {' '}
                                                     {
                                                         authState.username === comment.username &&
                                                         <>

@@ -36,7 +36,7 @@ function ChangePassword() {
                                 <label className="text-dark fw-normal col-form-label">Old Password: </label>
                                 <div className="col-sm-12">
                                     <input 
-                                        type="text" 
+                                        type="password" 
                                         placeholder="Input your old password"
                                         className="form-control rounded-pill" 
                                         onChange={(event) => {setOldPassword(event.target.value)}} 
@@ -61,9 +61,9 @@ function ChangePassword() {
                                 <div className="col-sm-12">
                                     <button
                                         type="password"
-                                        className="btn btn-lg btn-success rounded-pill w-100"
+                                        className="btn btn-md btn-success fw-bold rounded-pill w-100"
                                         onClick={changePassword}
-                                    >Save Password
+                                    ><i className="fa-solid fa-floppy-disk"></i> Simpan
                                     </button>
                                 </div>
                             </div>

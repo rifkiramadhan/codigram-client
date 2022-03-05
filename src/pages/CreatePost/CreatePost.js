@@ -1,37 +1,36 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './CreatePost.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import { AuthContext } from '../../helpers/AuthContext';
 import Swal from 'sweetalert2';
 import { URL } from '../../config/config';
 
 function CreatePost() {
-    const { authState } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
 
     let history = useHistory();
 
     const initialValues = {
-        title: "",
-        postText: "",
-        case: "",
-        drug: ""
+        title: '',
+        postText: '',
+        case: '',
+        drug: '',
+        createdAt: '',
     };
 
     useEffect(() => {
         if (!localStorage.getItem('accessToken')) {
             history.push('/login');
         };
-    }, []);
+    }, [history]);
 
     const validationSchema = Yup.object().shape({
-        title: Yup.string().required("You must input a Title!"),
-        postText: Yup.string().required("You must input a Post!"),
-        case: Yup.string().required("You must input a Case!"),
-        drug: Yup.string().required("You must input a Drug!"),
+        title: Yup.string().required('You must input a Title!'),
+        postText: Yup.string().required('You must input a Post!'),
+        case: Yup.string().required('You must input a Case!'),
+        drug: Yup.string().required('You must input a Drug!'),
     });
 
     const onSubmit = (data) => {

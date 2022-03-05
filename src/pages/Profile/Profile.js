@@ -22,18 +22,12 @@ function Profile() {
         axios.get(`${URL}/posts/byuserId/${id}`).then((response) => {
             setListOfPosts(response.data);
         });
-    }, []);
-
-    const date = new Date().toLocaleDateString('id-ID', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-    });
+    }, [id]);
 
     return (
             <div className="container">
                 <div className="row">
-                    <h1 className="text-center text-dark fw-bold mb-5 mt-5 pt-5">Profile Saya</h1>
+                    <h1 className="text-center text-dark fw-bold mb-5 mt-5 pt-5">Profile</h1>
                     <div className="col-md-12 card-profile mb-5">
                             <div className="img-name text-center">
                                 <img
@@ -69,7 +63,7 @@ function Profile() {
                                                     <div className="card-text">
                                                         <span className="fw-bold">{value.username}</span>
                                                         <p className="text-muted">
-                                                            <small>{date}</small>
+                                                            <small>{value.createdAt}</small>
                                                         </p>
                                                     </div>
                                                 </div>

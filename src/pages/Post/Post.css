@@ -24,7 +24,7 @@
 
 /* Block Case */
 .classy-bq {
-  border-left:1px solid var(--light-green-color);
+  border-left: 3px solid var(--grey-color);
   margin: 1.5em 5px;
   padding: .7em 3px;
   quotes: "\201C""\201D""\2018""\2019";

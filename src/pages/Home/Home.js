@@ -1,16 +1,14 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Home.css';
 import logoPost from '../../assets/u-post.png';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
-import { AuthContext } from '../../helpers/AuthContext';
 import { URL } from '../../config/config';
 
 function Home() {
 
     const [listOfPosts, setListOfPosts] = useState([]);
     const [likedPost, setLikedPost] = useState([]);
-    const { authState } = useContext(AuthContext);
     let history = useHistory();
 
     useEffect(() => {
@@ -30,7 +28,7 @@ function Home() {
                 }));
             });
         };  
-    }, []);
+    }, [history]);
 
     const likeAPost = (postId) => {
         axios.post(`${URL}/likes`, {
@@ -93,7 +91,7 @@ function Home() {
                                 <div className="row mt-5">
                                     <div className="col-xs-12 col-sm-9">
                                         <div 
-                                            key={key} className="card card-hover"
+                                            key={key} className="card"
                                         >
                                             <div className="card-body">
                                                 <div className="card-title">
@@ -101,9 +99,11 @@ function Home() {
                                                         to={`/profile/${value.UserId}`}
                                                         className="text-decoration-none"
                                                     >
-                                                        <h4 className="fw-bold">
-                                                            <img src={logoPost} className="img-thumbnail rounded-circle img-post" alt="Logo Post" /> {value.username}
-                                                        </h4>
+                                                        <div className="card-image d-flex gap-2">
+                                                            <img src={logoPost} className="img-thumbnail rounded-circle" alt="Logo Post" />
+                                                            {' '}
+                                                            <h2 className="fw-bold">{value.username}</h2>
+                                                        </div>
                                                     </Link>
                                                 </div>
 
@@ -129,21 +129,20 @@ function Home() {
                                                 
                                                 <div className="card-text text-muted mt-4">
                                                     <div className="buttonsHome">
-                                                        <label>
-                                                            <h4 className="d-flex gap-4">
+                                                        <div className="d-flex align-items-center justify-content-center gap-5">
+                                                            <h2>
                                                                 <i
                                                                     className={likedPost.includes(value.id) ? "fas fa-thumbs-up unlikeBttn" : "fas fa-thumbs-up likeBttn"}
                                                                     onClick={() => likeAPost(value.id)}
                                                                 >
                                                                 </i>
-                                                                <Link 
-                                                                    onClick={() => {history.push(`/post/${value.id}`)}}
-                                                                    className="btn btn-sm btn btn-outline-success rounded-pill"
-                                                                ><i className="fa-solid fa-comment-dots"></i> Comment
-
-                                                                </Link>
-                                                            </h4>
-                                                        </label>
+                                                            </h2>
+                                                            <Link 
+                                                                onClick={() => {history.push(`/post/${value.id}`)}}
+                                                                className="btn btn-md btn btn-outline-success fw-bold rounded-pill"
+                                                            ><i className="fa-solid fa-comment-dots"></i> Comment
+                                                            </Link>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

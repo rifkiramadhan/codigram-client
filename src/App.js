@@ -42,7 +42,7 @@ function App() {
           });
         };
       });
-  }, []);
+  }, [authState]);
 
   const logout = () => {
     localStorage.removeItem('accessToken');
@@ -50,7 +50,7 @@ function App() {
       username: '',
       id: 0,
       status: false
-    });
+    });   
   };
 
   return (
@@ -101,7 +101,7 @@ function App() {
                     </li>
                     <li className="nav-item">
                       <Link 
-                        className="btn btn-light border-success fw-bold w-100 text-uppercase rounded-pill" 
+                        className="btn btn-light btn-outline-success fw-bold w-100 text-uppercase rounded-pill" 
                         to="/login"
                       >Sign In
                       </Link>
@@ -143,11 +143,17 @@ function App() {
                 >
                 <>
                     <Dropdown.Item>
-                        <button 
+                        <Link 
+                            className="btn nav-link text-dark fw-medium text-uppercase"
+                            to={`/profile/${authState.id}`}
+                        > Profile
+                        </Link>
+                        <Link 
                             className="btn nav-link text-dark fw-medium text-uppercase"
                             onClick={() => logout()}
+                            to="/login"
                         > Sign Out
-                        </button>
+                        </Link>
                     </Dropdown.Item>
                 </>
                 </DropdownButton>

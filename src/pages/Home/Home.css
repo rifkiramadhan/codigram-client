@@ -1,5 +1,9 @@
 /* Card Home */
 .card-home {
+  backdrop-filter: blur( 3.5px );
+  -webkit-backdrop-filter: blur( 3.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,18 +16,6 @@
   -webkit-border-radius: 25px 25px 25px 25px;
   border: 0px solid var(--black-color);
   background-color: var(--light-green-color);
-}
-
-.card-hover {
-  backdrop-filter: blur( 3.5px );
-  -webkit-backdrop-filter: blur( 3.5px );
-  border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
-  transition: all 1s ease;
-}
-
-.card-hover:hover {
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 }
 
 .post-text-home {
@@ -42,9 +34,8 @@
   -webkit-box-orient: vertical;
 }
 
-
 .img-post {
-  max-width: 40px;
+  max-width: 35px;
 }
 
 /* Link Profile */

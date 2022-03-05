@@ -12,11 +12,6 @@
     -moz-border-radius: 25px 25px 25px 25px;
     -webkit-border-radius: 25px 25px 25px 25px;
     border: 0px solid var(--black-color);
-    transition: all 1s ease;
-}
-
-.card-profile-post:hover {
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 }
 
 .card-image img {

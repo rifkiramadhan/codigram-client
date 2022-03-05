@@ -1,6 +1,5 @@
 import React from 'react';
 import './PageNotFound.css';
-import { Link } from 'react-router-dom';
 
 function PageNotFound() {
   return (
@@ -10,7 +9,6 @@ function PageNotFound() {
           </div>
           <div className="message">
               Halaman Tidak Ditemukan
-              <br />
           </div>
         </div>
   );
