@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
 import './Profile.css';
 import logo from '../../assets/se.png';
-import { useParams, useHistory } from 'react-router-dom'
+import logoPost from '../../assets/u-post.png';
+import { useParams, useHistory, Link } from 'react-router-dom'
 import axios from 'axios';
 import { AuthContext } from '../../helpers/AuthContext';
 import { URL } from '../../config/config';
@@ -39,63 +40,61 @@ function Profile() {
                                     src={logo}
                                     alt="User" 
                                     />
-                                <h2>{username}</h2>
+                                <h2 className="mt-2">
+                                    {username}
+                                </h2>
                                 <span>Software Engineer</span>
+                                <div className="card-body">
+                                    {authState.username === username && (
+                                        <button 
+                                            className="btn btn-primary btn-sm fw-bold rounded-pill mt-2"
+                                            onClick={() => {history.push('/changepassword')}}
+                                        ><i className="fa-solid fa-gear"></i> Change Password
+                                        </button>
+                                    )}
+                                </div>
                             </div>
 
-                            
-                            <div className="card-body">
-                                {authState.username === username && (
-                                    <button 
-                                        className="btn btn-primary btn-sm fw-bold rounded-pill"
-                                        onClick={() => {history.push('/changepassword')}}
-                                    >Change Password
-                                    </button>
-                                )}
-                            </div>
-
-                            <div className="row m-2 d-flex justify-content-center gap-2">
+                            <div className="row m-4 d-flex justify-content-center gap-2">
                             {
                                 listOfPosts.map((value, key) => {
                                     return (
                                             <div 
                                                 key={key} className="border card-profile-post border-secondary bg-light col-xs-12 col-sm-5 p-4"
-                                                onClick={() => {history.push(`/post/${value.id}`)}}
                                             >
-                                                {/* <div className="card-text">
-                                                    <h4 className="fw-bold">
-                                                        <i className="fa-solid fa-circle-user fw-bold"></i> {value.username}
-                                                    </h4>
-                                                    <small className="text-muted">{date}</small>
-                                                </div>
-                                                <div className="card-title mt-4 fw-bold">
-                                                    {value.title}
-                                                </div> */}
-
                                                 <div className="d-flex gap-2">
-                                                    <h1>
-                                                        <i className="fa-solid fa-circle-user fw-bold"></i> 
-                                                    </h1>
-                                                    <h6 className="wrap-text">
-                                                        <div className="fw-bold">
-                                                            {value.username}
-                                                        </div>
+                                                    <div className="card-image">
+                                                        <img src={logoPost} alt="Logo Post" class="img-thumbnail rounded-circle" />
+                                                    </div>
+                                                    <div className="card-text">
+                                                        <span className="fw-bold">{value.username}</span>
                                                         <p className="text-muted">
                                                             <small>{date}</small>
                                                         </p>
-                                                    </h6>
+                                                    </div>
+                                                </div>
+
+                                                <div className="card-title mt-2 fw-bold">
+                                                    {value.title}
                                                 </div>
 
                                                 <div 
-                                                    className="card-text"
+                                                    className="card-text post-text"
                                                 >
                                                     {value.postText}
                                                 </div>
                                                 <div className="card-text mt-4">
-                                                    <div className="card-text">
+                                                    <div className="card-text d-flex">
                                                         <small>
                                                             <i className="fa-solid fa-thumbs-up"></i> {value.Likes.length} orang menyukai
                                                         </small>
+                                                    </div>
+                                                    <div className="d-flex justify-content-end">
+                                                        <Link
+                                                            onClick={() => {history.push(`/post/${value.id}`)}}
+                                                            className="btn btn-sm btn btn-outline-success rounded-pill"
+                                                        ><i className="fa-solid fa-comment-dots"></i> Comment
+                                                        </Link>
                                                     </div>
                                                 </div>
                                             </div>

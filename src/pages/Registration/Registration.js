@@ -78,7 +78,7 @@ function Registration() {
                                     id="inputCreatePost" 
                                     name="password"
                                     className="form-control rounded-pill" 
-                                    placeholder="Input your password..." 
+                                    placeholder="Your password" 
                                 />
                             </div>
                             <ErrorMessage name="password" component="span" />

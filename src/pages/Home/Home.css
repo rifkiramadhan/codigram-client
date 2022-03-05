@@ -20,11 +20,31 @@
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
   transition: all 1s ease;
-  cursor: pointer;
 }
 
 .card-hover:hover {
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+}
+
+.post-text-home {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.post-text-home:hover {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+
+.img-post {
+  max-width: 40px;
 }
 
 /* Link Profile */

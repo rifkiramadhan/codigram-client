@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './Post.css';
+import logoPost from '../../assets/u-post.png';
+import logoComment from '../../assets/u-comment.png';
 import axios from 'axios';
 import { useParams, useHistory, Link } from 'react-router-dom';
 import { AuthContext } from '../../helpers/AuthContext';
@@ -159,31 +161,24 @@ function Post() {
                     <div className="card card-body col-xs-12 col-sm-6">
                         <div className="card-text">
                         <Link 
-                            to={`/profile/${id}`}
+                            to={`/profile/${postObject.UserId}`}
                             className="text-decoration-none d-flex gap-2"
                         >
-                            <h1>
-                                <i className="fa-solid fa-circle-user fw-bold"></i> 
-                            </h1>
-                            <div className="fw-bold text-wrap">
-                                <h5 className="fw-bold">
-                                    {postObject.username}
-                                    <h6 className="text-muted">
-                                        {postObject.createdAt}
-                                    </h6>
-                                </h5>
+                            <div className="card-image">
+                                <img src={logoPost} alt="Logo Post" class="img-thumbnail rounded-circle" />
+                            </div>
+                            <div className="text-wrap">
+                                <span className="fw-bold">{postObject.username}</span>
+                                <p className="text-muted">
+                                    <small>{postObject.createdAt}</small>
+                                </p>
                             </div>
                         </Link>
                             {" "}
                         </div>
 
                         <div 
-                            className="card-title mt-2 edit" 
-                            onClick={() => {
-                                if (authState.username === postObject.username) {
-                                    editPost('title');
-                                };
-                            }}
+                            className="card-title mt-2"
                         >
                             <blockquote className="block-title">
                                 {postObject.title}
@@ -192,11 +187,7 @@ function Post() {
 
                         <div 
                             className="card-text mt-2 edit rounded-body" 
-                            onClick={() => {
-                                if (authState.username === postObject.username) {
-                                    editPost('body');
-                                };
-                            }}>
+                        >
                             <section class="blockquote-section">
                                 <blockquote class="classy-bq">
                                     <p>
@@ -208,56 +199,84 @@ function Post() {
 
                         {authState.username === postObject.username && (
                         <div className="d-flex bd-highlight mt-4">
-                            <div className="ms-auto p-2 bd-highlight">
-                                <button
+                            <div className="bd-highlight">
+                                <Link 
+                                    onClick={() => {
+                                        if (authState.username === postObject.username) {
+                                            editPost('title');
+                                        };
+                                    }}
+                                    className="card-link btn btn-sm btn-primary rounded-pill"
+                                ><i className="fa-solid fa-pen-to-square"></i> Edit Title
+                                </Link>
+                                <Link 
+                                    onClick={() => {
+                                        if (authState.username === postObject.username) {
+                                            editPost('body');
+                                        };
+                                    }}
+                                    className="card-link btn btn-sm btn-primary rounded-pill"
+                                ><i className="fa-solid fa-pen-to-square"></i> Edit Post
+                                </Link>
+                            </div>
+                            <div className="ms-auto bd-highlight">
+                                <Link
                                     className="btn btn-sm btn-danger rounded-pill"
                                     onClick={() => {deletePost(postObject.id)}}
                                 ><i className="fa-solid fa-trash"></i> Hapus
-                                </button>
+                                </Link>
                             </div>
                         </div>
                         )}
                     </div>
+
                     <div className="card col-xs-12 col-sm-3">
-                    <h5 className="fw-bold m-2 text-center">Comment</h5>
+                        <h5 className="fw-bold m-3 text-center">Comment</h5>
                         <div className="card-body">
                             <textarea 
                                 type="text" 
                                 placeholder="Input your comment"
-                                className="form-control rounded-pill mb-5" 
+                                className="form-control rounded-textarea mb-5 d-block" 
                                 autoComplete="off" 
                                 value={newComment}
                                 onChange={(event) => {setNewComment(event.target.value)}}
                             />
+                            <div className="d-flex bd-highlight mt-4">
+                                <div className="ms-auto p-2 bd-highlight">
+                                    <button 
+                                        className="btn btn-sm btn-success rounded-pill"
+                                        onClick={addComment}
+                                    ><i className="fa-solid fa-paper-plane"></i> Comment
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                        <div className="card-body">
-                            <button 
-                                className="btn btn-sm btn-success rounded-pill"
-                                onClick={addComment}
-                            ><i className="fa-solid fa-paper-plane"></i> Comment
-                            </button>
-                        </div>            
                     </div>
 
                     <div className="card-comment">
                         <div className="card-body">
                             {
                                 comments.map((comment, key) => {
+
+                                    const date = new Date().toLocaleDateString('id-ID', {
+                                        year: 'numeric',
+                                        month: 'long',
+                                        day: 'numeric',
+                                    });
+
                                     return (
                                             <div key={key} className="card-title mt-5 border-start border-success bg-light rounded-comment">
                                                 <div className="m-2 p-2">
                                                     <div className="d-flex gap-2">
-                                                        <h1>
-                                                            <i className="text-secondary fa-solid fa-circle-user fw-bold"></i> 
-                                                        </h1>
-                                                        <h6 className="wrap-text">
-                                                            <div className="fw-bold">
-                                                                {comment.username}
-                                                            </div>
+                                                        <div className="card-image">
+                                                            <img src={logoComment} alt="Logo Post" class="img-thumbnail rounded-circle" />
+                                                        </div>
+                                                        <div className="card-text">
+                                                            <span className="fw-bold">{comment.username}</span>
                                                             <p className="text-muted">
                                                                 <small>{date}</small>
                                                             </p>
-                                                        </h6>
+                                                        </div>
                                                     </div>
 
                                                     {" "}

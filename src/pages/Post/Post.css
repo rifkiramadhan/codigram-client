@@ -12,7 +12,6 @@
   font-size: 18px;
   margin: 20px auto;
   font-weight: bold;
-  color: var(--grey-color);
   padding: 1.2em 30px 1.2em;
   border-left: 3px solid var(--light-grey-color);
   line-height: 1.6;
@@ -54,16 +53,6 @@ blockquote p {
   padding:20px;
 }
 
-/* Edit */
-.edit {
-  cursor: pointer;
-  transition: all 1s ease;
-}
-
-.edit:hover {
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-}
-
 /* Rounded Comment */
 .rounded-comment {
   border-radius: 0px 18px 18px 0px;
@@ -79,4 +68,13 @@ blockquote p {
   -webkit-border-radius: 0px 18px 18px 0px;
   border: 0px solid var(--black-color);
   background-color: var(--white-color);
+}
+
+/* Rounded Textarea */
+.rounded-textarea {
+  border-radius: 25px 25px 25px 25px;
+  -moz-border-radius: 25px 25px 25px 25px;
+  -webkit-border-radius: 25px 25px 25px 25px;
+  border: 0px solid var(--black-color);
+  max-width: 100%;
 }

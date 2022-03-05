@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import './Home.css';
+import logoPost from '../../assets/u-post.png';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 import { AuthContext } from '../../helpers/AuthContext';
@@ -101,23 +102,22 @@ function Home() {
                                                         className="text-decoration-none"
                                                     >
                                                         <h4 className="fw-bold">
-                                                            <i className="fa-solid fa-circle-user"></i> {value.username}
+                                                            <img src={logoPost} className="img-thumbnail rounded-circle img-post" alt="Logo Post" /> {value.username}
                                                         </h4>
                                                     </Link>
                                                 </div>
 
                                                 <div
                                                     className="rounded-post p-2 mt-4 border-top border-success"
-                                                    onClick={() => {history.push(`/post/${value.id}`)}}
                                                 >
-                                                    <div className="card-title mt-4">
+                                                    <div className="card-title fw-bold mt-4">
                                                         {value.title}
                                                     </div>
                                                     
                                                     <div 
-                                                        className="card-subtitle mb-2 mt-2 text-muted"
+                                                        className="card-subtitle mb-2 mt-2 post-text-home"
                                                     >
-                                                            {value.postText}
+                                                        {value.postText}
                                                     </div>
                                                 </div>
                                                 
@@ -130,12 +130,18 @@ function Home() {
                                                 <div className="card-text text-muted mt-4">
                                                     <div className="buttonsHome">
                                                         <label>
-                                                            <h4>
+                                                            <h4 className="d-flex gap-4">
                                                                 <i
                                                                     className={likedPost.includes(value.id) ? "fas fa-thumbs-up unlikeBttn" : "fas fa-thumbs-up likeBttn"}
                                                                     onClick={() => likeAPost(value.id)}
                                                                 >
                                                                 </i>
+                                                                <Link 
+                                                                    onClick={() => {history.push(`/post/${value.id}`)}}
+                                                                    className="btn btn-sm btn btn-outline-success rounded-pill"
+                                                                ><i className="fa-solid fa-comment-dots"></i> Comment
+
+                                                                </Link>
                                                             </h4>
                                                         </label>
                                                     </div>
