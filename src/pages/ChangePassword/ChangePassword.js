@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import './ChangePassword.css';
 import axios from 'axios';
 import { URL } from '../../config/config';
+import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function ChangePassword() {
-    const [oldPassword, setOldPassword] = useState("");
-    const [newPassword, setNewPassword] = useState("");
+    const [oldPassword, setOldPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const history = useHistory();
 
     const changePassword = () => {
         axios.put(`${URL}/auth/changepassword`,
@@ -15,7 +18,7 @@ function ChangePassword() {
             },
             {
                 headers: {
-                    accessToken: localStorage.getItem("accessToken"),
+                    accessToken: localStorage.getItem('accessToken'),
                 },
             }
           )
@@ -24,6 +27,16 @@ function ChangePassword() {
               alert(response.data.error);
             }
           });
+
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Anda berhasil merubah password',
+            showConfirmButton: false,
+            timer: 1500
+          });
+
+          history.push('/');
     };
     
     return (

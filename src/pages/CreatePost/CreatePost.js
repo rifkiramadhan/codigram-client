@@ -17,7 +17,6 @@ function CreatePost() {
         postText: '',
         case: '',
         drug: '',
-        createdAt: '',
     };
 
     useEffect(() => {
@@ -40,7 +39,7 @@ function CreatePost() {
             headers: {
                 accessToken: localStorage.getItem('accessToken')       
             }
-        }).then((response) => {
+        }).then(() => {
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
