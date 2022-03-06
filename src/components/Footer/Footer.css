@@ -1,0 +1,9 @@
+/* Footer */
+.footer {
+    margin-top: 100px;
+}
+
+.footer p {
+    color: var(--grey-color);
+    font-size: 18px;
+}

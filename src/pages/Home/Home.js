@@ -76,7 +76,7 @@ function Home() {
   };
 
   return (
-    <div>
+    <>
       {
             listOfPosts.map((value, key) => (
               <div className="container">
@@ -169,8 +169,8 @@ function Home() {
                 </div>
               </div>
             ))
-        }
-    </div>
+          }
+    </>
   );
 }
 

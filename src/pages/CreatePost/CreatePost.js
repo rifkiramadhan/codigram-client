@@ -102,6 +102,7 @@ function CreatePost() {
                 <option value="Batuk dan Pilek">Batuk dan Pilek</option>
                 <option value="Batuk Kering">Batuk Kering</option>
                 <option value="Cacar Air">Cacar Air</option>
+                <option value="Biduran">Biduran</option>
                 <option value="Demam Berdarah">Demam Berdarah</option>
                 <option value="Demam Tinggi">Demam Tinggi</option>
                 <option value="Sakit Kepala">Sakit Kepala</option>

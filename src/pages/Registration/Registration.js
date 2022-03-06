@@ -8,6 +8,7 @@ import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { URL } from '../../config/config';
+import { Footer, Jumbotron } from '../../components';
 
 function Registration() {
   const [loading, setLoading] = useState(false);
@@ -50,7 +51,8 @@ function Registration() {
   };
 
   return (
-    <>
+    <div className="container-fluid">
+      <Jumbotron />
       <h1 className="text-center text-dark fw-bold mt-5 pt-5">Sign Up Account</h1>
       <div className="container d-flex align-items-center justify-content-center">
         <div className="container-form card-form-user m-5 p-5">
@@ -102,6 +104,8 @@ function Registration() {
                           type="submit"
                           className="btn btn-md btn-success fw-bold rounded-pill w-100"
                         >
+                          <i className="fa-solid fa-arrow-right-to-bracket" />
+                          {' '}
                           Sign Up
                         </button>
                       )
@@ -124,7 +128,8 @@ function Registration() {
           </Formik>
         </div>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }
 

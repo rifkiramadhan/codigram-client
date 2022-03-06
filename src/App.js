@@ -114,6 +114,8 @@ function App() {
                           className="btn btn-light btn-outline-success fw-bold w-100 text-uppercase rounded-pill"
                           to="/login"
                         >
+                          <i className="fa-solid fa-right-to-bracket" />
+                          {' '}
                           Sign In
                         </Link>
                       </li>
@@ -122,6 +124,8 @@ function App() {
                           className="btn btn-success fw-bold w-100 text-uppercase rounded-pill"
                           to="/registration"
                         >
+                          <i className="fa-solid fa-arrow-right-to-bracket" />
+                          {' '}
                           Sgin Up
                         </Link>
                       </li>
@@ -164,7 +168,6 @@ function App() {
                         className="btn nav-link text-dark fw-medium text-uppercase"
                         to={`/profile/${authState.id}`}
                       >
-                        {' '}
                         <i className="fa-solid fa-user-doctor text-success" />
                         {' '}
                         Profile
@@ -174,8 +177,7 @@ function App() {
                         onClick={() => logout()}
                         to="/login"
                       >
-                        {' '}
-                        <i className="fa-solid fa-arrow-right-to-bracket text-danger" />
+                        <i className="fa-solid fa-power-off text-success" />
                         {' '}
                         Sign Out
                       </Link>
@@ -195,6 +197,7 @@ function App() {
 
           </Container>
         </Navbar>
+
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/createpost" exact component={CreatePost} />

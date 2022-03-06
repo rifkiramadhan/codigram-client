@@ -31,6 +31,9 @@
         "jsx-a11y/anchor-is-valid": "off",
         "import/order": "off",
         "react/jsx-no-constructed-context-values": "off",
-        "max-len": "off"
+        "max-len": "off",
+        "linebreak-style": 0,
+        "react/prefer-stateless-function": "off",
+        "no-nested-ternary": "off"
     }
 }

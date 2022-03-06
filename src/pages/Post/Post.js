@@ -13,6 +13,7 @@ function Post() {
   const [postObject, setPostObject] = useState({});
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
+  const [loading, setLoading] = useState(false);
   const { authState } = useContext(AuthContext);
   const history = useHistory();
 
@@ -27,6 +28,8 @@ function Post() {
   }, [id]);
 
   const addComment = () => {
+    setLoading(true);
+
     axios.post(
       `${URL}/comments`,
       {
@@ -46,6 +49,7 @@ function Post() {
             title: 'Posting Komentar Gagal!',
             text: `${response.data.error}`,
           });
+          setLoading(false);
         } else {
           const commentToAdd = {
             commentBody: newComment,
@@ -58,9 +62,10 @@ function Post() {
           Swal.fire({
             icon: 'success',
             title: 'Anda berhasil posting komentar',
-            text: `Pesan dari ${postObject.username} urutan ke-${postObject.UserId}`,
+            text: `Pesan dari ${postObject.username} di judul "${postObject.title}"`,
           });
         }
+        setLoading(false);
         history.push('/');
         // window.location.reload();
       });
@@ -213,7 +218,7 @@ function Post() {
                       editPost('title');
                     }
                   }}
-                  className="card-link btn btn-sm btn-primary rounded-pill"
+                  className="card-link btn btn-md btn-primary rounded-pill"
                 >
                   <i className="fa-solid fa-pen-to-square" />
                   {' '}
@@ -225,7 +230,7 @@ function Post() {
                       editPost('body');
                     }
                   }}
-                  className="card-link btn btn-sm btn-primary rounded-pill"
+                  className="card-link btn btn-md btn-primary rounded-pill"
                 >
                   <i className="fa-solid fa-pen-to-square" />
                   {' '}
@@ -234,7 +239,7 @@ function Post() {
               </div>
               <div className="ms-auto bd-highlight">
                 <Link
-                  className="btn btn-sm btn-danger rounded-pill"
+                  className="btn btn-md btn-danger rounded-pill"
                   onClick={() => { deletePost(postObject.id); }}
                 >
                   <i className="fa-solid fa-trash" />
@@ -259,14 +264,28 @@ function Post() {
               />
               <div className="d-flex bd-highlight mt-4">
                 <div className="ms-auto p-2 bd-highlight">
-                  <Link
-                    className="btn btn-sm btn-success rounded-pill"
-                    onClick={addComment}
-                  >
-                    <i className="fa-solid fa-paper-plane" />
-                    {' '}
-                    Comment
-                  </Link>
+                  {
+                    loading ? (
+                      <button
+                        className="btn btn-success btn-md fw-bold rounded-pill w-100"
+                        type="submit"
+                        disabled
+                      >
+                        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true" />
+                        {' '}
+                        Loading ...
+                      </button>
+                    ) : (
+                      <Link
+                        className="btn btn-md btn-success rounded-pill"
+                        onClick={addComment}
+                      >
+                        <i className="fa-solid fa-paper-plane" />
+                        {' '}
+                        Comment
+                      </Link>
+                    )
+                  }
                 </div>
               </div>
             </div>
@@ -300,9 +319,9 @@ function Post() {
                            authState.username === comment.username
                            && (
                            <div className="d-flex bd-highlight">
-                             <div className="ms-auto p-2 bd-highlight">
+                             <div className="ms-auto mt-4 bd-highlight">
                                <Link
-                                 className="btn btn-sm btn-danger rounded-pill"
+                                 className="btn btn-md btn-danger rounded-pill"
                                  onClick={() => { deleteComment(comment.id); }}
                                >
                                  <i className="fa-solid fa-trash" />

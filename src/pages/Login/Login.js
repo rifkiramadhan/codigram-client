@@ -5,6 +5,7 @@ import { Link, useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../helpers/AuthContext';
 import { URL } from '../../config/config';
+import { Footer, Jumbotron } from '../../components';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -44,11 +45,12 @@ function Login() {
   };
 
   return (
-    <>
+    <div className="container-fluid">
+      <Jumbotron />
       <h1 className="text-center text-dark fw-bold mt-5 pt-5">Sign In Account</h1>
       <div className="container d-flex align-items-center justify-content-center">
         <div className="container-form card-form-user m-5 p-5">
-          <form className="skeleton row d-flex align-items-center justify-content-center">
+          <form className="row d-flex align-items-center justify-content-center">
 
             <div className=" row mb-3 d-grid">
               <label className="text-dark col-sm-2 fw-normal col-form-label">Username: </label>
@@ -95,6 +97,8 @@ function Login() {
                         className="btn btn-md btn-success fw-bold rounded-pill w-100"
                         onClick={login}
                       >
+                        <i className="fa-solid fa-right-to-bracket" />
+                        {' '}
                         Sign In
                       </button>
                     )
@@ -114,7 +118,8 @@ function Login() {
           </div>
         </div>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }
 
