@@ -8,12 +8,12 @@ import ChangePassword from './ChangePassword/ChangePassword';
 import PageNotFound from './PageNotFound/PageNotFound';
 
 export {
-    Login,
-    Registration,
-    Post,
-    CreatePost,
-    Home,
-    Profile,
-    ChangePassword,
-    PageNotFound
+  Login,
+  Registration,
+  Post,
+  CreatePost,
+  Home,
+  Profile,
+  ChangePassword,
+  PageNotFound,
 };
