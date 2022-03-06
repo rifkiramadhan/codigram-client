@@ -91,19 +91,23 @@ function App() {
 
             <Navbar.Toggle className="coloring" />
 
-            <Navbar.Collapse className="justify-content-end">
+            <Navbar.Collapse className="justify-content-end fw-medium">
 
               <Nav className="justify-content-end">
                 <ul className="navbar-nav ml-auto mb-2 mb-lg-0 gap-3">
                   {!authState.status ? (
                     <>
                       <li className="nav-item">
-                        <Link
+                        <a
                           className="nav-link text-dark text-uppercase"
                           href="http://bit.ly/Rifki-Portfolio"
+                          target="_blank"
+                          rel="noreferrer"
                         >
+                          <i className="fa-solid fa-address-card text-success" />
+                          {' '}
                           About Me
-                        </Link>
+                        </a>
                       </li>
                       <li className="nav-item">
                         <Link
@@ -129,6 +133,8 @@ function App() {
                           className="nav-link text-dark text-uppercase"
                           to="/"
                         >
+                          <i className="fa-solid fa-house-user text-success" />
+                          {' '}
                           Beranda
                         </Link>
                       </li>
@@ -137,6 +143,8 @@ function App() {
                           className="nav-link text-dark text-uppercase"
                           to="/createpost"
                         >
+                          <i className="fa-solid fa-circle-plus text-success" />
+                          {' '}
                           Buat Postingan
                         </Link>
                       </li>
@@ -157,6 +165,8 @@ function App() {
                         to={`/profile/${authState.id}`}
                       >
                         {' '}
+                        <i className="fa-solid fa-user-doctor text-success" />
+                        {' '}
                         Profile
                       </Link>
                       <Link
@@ -164,6 +174,8 @@ function App() {
                         onClick={() => logout()}
                         to="/login"
                       >
+                        {' '}
+                        <i className="fa-solid fa-arrow-right-to-bracket text-danger" />
                         {' '}
                         Sign Out
                       </Link>

@@ -56,14 +56,13 @@ function Post() {
           setNewComment('');
 
           Swal.fire({
-            position: 'top-end',
             icon: 'success',
             title: 'Anda berhasil posting komentar',
-            showConfirmButton: false,
-            timer: 1500,
+            text: `Pesan dari ${postObject.username} urutan ke-${postObject.UserId}`,
           });
         }
-        window.location.reload();
+        history.push('/');
+        // window.location.reload();
       });
   };
 
@@ -73,10 +72,6 @@ function Post() {
         accessToken: localStorage.getItem('accessToken'),
       },
     }).then(() => {
-      setComments(
-        comments.filter((val) => val.id !== id),
-      );
-
       Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -84,6 +79,9 @@ function Post() {
         showConfirmButton: false,
         timer: 1500,
       });
+      setComments(
+        comments.filter((val) => val.id !== id),
+      );
     });
   };
 
