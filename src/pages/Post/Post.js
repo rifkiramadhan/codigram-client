@@ -60,14 +60,16 @@ function Post() {
           setNewComment('');
 
           Swal.fire({
+            position: 'top-end',
             icon: 'success',
-            title: 'Anda berhasil posting komentar',
-            text: `Pesan dari ${postObject.username} di judul "${postObject.title}"`,
+            title: 'Anda berhasil memposting komentar',
+            showConfirmButton: false,
+            timer: 1500,
           });
         }
         setLoading(false);
-        history.push('/');
-        // window.location.reload();
+        // history.push(`/post/${id}`);
+        window.location.reload();
       });
   };
 
