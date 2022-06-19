@@ -126,7 +126,7 @@ function App() {
                         >
                           <i className="fa-solid fa-arrow-right-to-bracket" />
                           {' '}
-                          Sgin Up
+                          Sign Up
                         </Link>
                       </li>
                     </>
