@@ -37,7 +37,11 @@ function Profile() {
             <h2 className="mt-2">
               {username}
             </h2>
-            <span>Software Engineer</span>
+            <span>
+              User:
+              {' '}
+              {id}
+            </span>
             <div className="card-body">
               {authState.username === username && (
               <Link
