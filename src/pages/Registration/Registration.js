@@ -17,11 +17,13 @@ function Registration() {
   const initialValues = {
     username: '',
     password: '',
+    role: '',
   };
 
   const validationSchema = Yup.object().shape({
     username: Yup.string().min(3).max(15).required('You must input a Username!'),
     password: Yup.string().min(4).max(20).required('You must input a Password!'),
+    role: Yup.string().min(4).max(20).required('You must input a Role!'),
   });
 
   const onSubmit = (data) => {
@@ -68,6 +70,26 @@ function Registration() {
                     className="form-control rounded-pill"
                     placeholder="Input your username"
                   />
+                </div>
+                <ErrorMessage name="username" component="span" />
+              </div>
+              <div className="row mb-3 d-grid ">
+                <div className="col-sm-12">
+                  <label className="col-sm-2 col-form-label">Role: </label>
+                  <Field
+                    autoComplete="off"
+                    id="inputCreatePost"
+                    as="select"
+                    name="role"
+                    className="form-select rounded-pill"
+                  >
+                    <option selected>-- Your role --</option>
+                    <option value="Dokter Specialist">Dokter Specialist</option>
+                    <option value="Dokter Umum">Dokter Umum</option>
+                    <option value="Pasien Sakit">Pasien Sakit</option>
+                    <option value="Pasien Konsultasi">Pasien Konsultasi</option>
+                  </Field>
+                  <ErrorMessage name="role" component="span" />
                 </div>
                 <ErrorMessage name="username" component="span" />
               </div>

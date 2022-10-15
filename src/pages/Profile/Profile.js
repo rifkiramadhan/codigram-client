@@ -11,12 +11,14 @@ function Profile() {
   const { id } = useParams();
   const history = useHistory();
   const [username, setUsername] = useState('');
+  const [role, setRole] = useState('');
   const [listOfPosts, setListOfPosts] = useState([]);
   const { authState } = useContext(AuthContext);
 
   useEffect(() => {
     axios.get(`${URL}/auth/basicinfo/${id}`).then((response) => {
       setUsername(response.data.username);
+      setRole(response.data.role);
     });
 
     axios.get(`${URL}/posts/byuserId/${id}`).then((response) => {
@@ -37,11 +39,20 @@ function Profile() {
             <h2 className="mt-2">
               {username}
             </h2>
-            <span>
-              User:
-              {' '}
-              {id}
-            </span>
+            <div className="d-flex justify-content-center">
+              <div className="badge bg-success rounded-pill d-flex align-items-center gap-2">
+                <span>
+                  {role}
+                </span>
+                {
+                  role === 'Dokter Specialist' && (
+                    <span className="badge bg-primary rounded-pill border border-1">
+                      <i className="fa-solid fa-check" />
+                    </span>
+                  )
+                }
+              </div>
+            </div>
             <div className="card-body">
               {authState.username === username && (
               <Link
