@@ -2,7 +2,8 @@ import React, { useEffect, useState, useContext } from 'react';
 import './Profile.css';
 import { useParams, useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
-import logo from '../../assets/se.png';
+import logoPatient from '../../assets/patient.png';
+import logoDoctor from '../../assets/doctor.png';
 import logoPost from '../../assets/u-post.png';
 import { AuthContext } from '../../helpers/AuthContext';
 import { URL } from '../../config/config';
@@ -32,10 +33,23 @@ function Profile() {
         <h1 className="text-center text-dark fw-bold mb-5 mt-5 pt-5">Profile</h1>
         <div className="col-md-12 card-profile mb-5">
           <div className="img-name text-center">
-            <img
-              src={logo}
-              alt="User"
-            />
+            {
+              role === 'Dokter Specialist' && 'Dokter Umum' && (
+                <img
+                  src={logoDoctor}
+                  alt="Doctor"
+                />
+              )
+            }
+
+            {
+              role === 'Pasien Konsultasi' && 'Pasien Sakit' && (
+                <img
+                  src={logoPatient}
+                  alt="Patient"
+                />
+              )
+            }
             <h2 className="mt-2">
               {username}
             </h2>
