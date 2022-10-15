@@ -91,7 +91,6 @@ function Registration() {
                   </Field>
                   <ErrorMessage name="role" component="span" />
                 </div>
-                <ErrorMessage name="username" component="span" />
               </div>
               <div className="row mb-3 d-grid ">
                 <label className="text-dark col-sm-2 fw-normal col-form-label">Password: </label>
