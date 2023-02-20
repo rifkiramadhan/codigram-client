@@ -1,2 +1,2 @@
-export const URL = "https://codigram-server-production.up.railway.app";
+export const URL = 'https://codigram-api.herokuapp.com';
 // export const URL = 'http://localhost:3001';
